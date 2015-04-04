@@ -32,12 +32,9 @@ typedef std::vector<Node> Nodes;
 
 
 class Excel {
+
 private:
-    int testmain;
-
-    // typedef boost::tuple<QString ,QString,QString,int,double> order;
     Orders orders;
-
 
 public:
     Excel(QString string);
