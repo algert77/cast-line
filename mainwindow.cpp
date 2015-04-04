@@ -62,27 +62,6 @@ int MainWindow::createActions() {
 
 int MainWindow::createControls() {
 
-
-
-    /*wgt = new QWidget();
-  button = new QPushButton("Есть!");
-  label = new QLabel("Тестовая метка ");
-
-  lineEdit = new QLineEdit("1700");
-  
-  gridLayout = new QVBoxLayout(this);
-  gridLayout->addWidget(label);
-  gridLayout->addWidget(button);
-  gridLayout->addWidget(tableView);
-  gridLayout->addWidget(lineEdit);
-  //fileDialog = new
-  
-  wgt->setLayout(gridLayout);
-  setCentralWidget(wgt);
-  connect(button, SIGNAL(clicked()), this, SLOT(pushButton()));
-  connect(this, SIGNAL(clck()), this, SLOT(clck_emit()));
-
-    */
     return 1;
 }
 
@@ -101,7 +80,6 @@ int MainWindow::clck_emit() {
 
 int MainWindow::fileDialog() {
 
-    //QStringList list;
     QFileDialog dialog(this);
     dialog.setNameFilter(tr("XLSX Files (*.xlsx)"));
 
@@ -156,7 +134,6 @@ int MainWindow::setVariables() {
 
 
 int MainWindow::pushButton() {
-
 
     int x = down_text->text().toInt();
     int y = up_text->text().toInt();
@@ -235,20 +212,16 @@ int MainWindow::count_signal() {
     //gr->makeGraph(excel.getOrders());
     gr->getRoutes();
 
-
     QStandardItemModel* modelS = createStandardModel(gr->getPairs(), excel.getOrders(),gr->getVector(),0);
     splitter = new QSplitter();
     tableView = new QTableView();
     tableView->setModel(modelS);
     tableView->resizeColumnToContents(0);
-    //  tableS.resizeColumnToContents(1);
     splitter->resize(900,600);
     splitter->addWidget(tableView);
-    //tableS.show();
     setCentralWidget(splitter);
-    //  wgt.show();
 
-    return 100;
+    return 1;
 }
 
 
@@ -257,15 +230,6 @@ int MainWindow::printOrders() {
 
     QPrinter printer(QPrinter::HighResolution);
 
-    /*  if(printer.setup(this) ) {
-    QPainter painter(&printer);
-    QRect rect = painter.viewport();
-    int side  = QMIN(rect.width(), rect.height());
-    painter.viewport(0, 0, side, side);
-    painter.setWindow(-50, -50, 100, 100);
-    splitter->draw(&painter);
-  }
-  */
     qDebug()<<tableView->model()->rowCount();
     QMessageBox message (QMessageBox::Warning, QString(tableView->model()->rowCount()), QString(tableView->model()->columnCount()));
     message.exec();
@@ -275,22 +239,14 @@ int MainWindow::printOrders() {
     if( printDialog->exec() == QDialog::Accepted)  {
 
         QPainter painter(&printer);
-        //int height = painter.device()->height();
-        //QRect rect = painter.viewport();
-        //printer.newPage();
         QPixmap pixmap(600,800);
-        //painter.drawPixmap(0, 0, pixmap);
-        //painter.drawText(tableView->
         QAbstractItemModel* model = tableView->model();
         for(int i = 0; i< 100; i++) {
 
             QModelIndex currentIndex = model->index(i, 0, tableView->rootIndex());
             painter.drawText(QPointF(0,i*300),currentIndex.data(Qt::TextAlignmentRole).toString());
-
         }
         painter.end();
-
-        //QSize size =
     }
     return 1;
 }
