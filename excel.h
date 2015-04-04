@@ -15,6 +15,8 @@
 #include <sstream>
 #include <functional>
 
+
+
 typedef QString DATE_STRING ; //дата окончания заказа
 typedef QString NAME_STRING; //наименование заказа
 typedef QString CARD_STRING; // Номер карты
@@ -29,16 +31,6 @@ typedef std::pair<NodeOrder, NodeOrder> Node;
 typedef std::vector<Node> Nodes;
 
 
-typedef struct {
-    QString name;
-    QString card;
-    QString date;
-    int width;
-    double quant;
-} orders_s;
-
-
-
 class Excel {
 private:
     int testmain;
@@ -51,12 +43,6 @@ public:
     Excel(QString string);
     std::vector<Order> getOrders();
 };
-
-
-
-
-
-
 
 #endif //EXCEL_H
 
