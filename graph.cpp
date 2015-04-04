@@ -2,7 +2,7 @@
 
 //define  static members:
 Orders Graph::orders   (0);
-std::vector <std::vector<int> > Graph::matrice(0);
+std::vector <std::vector<int> > Graph::matrix(0);
 //static std::vector<std::vector<int> >::iterator out (0);
 //static std::vector<int>::iterator in (0);
 std::vector<int>  Graph::inVec(0);
@@ -82,7 +82,7 @@ int Graph::recIter( Orders::iterator r) {
     int index  = std::distance(orders.begin(),r);
     //
     find_if2(orders.begin(),orders.end(),index, makeMatrice);
-    matrice.push_back(inVec);
+    matrix.push_back(inVec);
     inVec.resize(0);
 
     return 1;
@@ -95,7 +95,7 @@ int Graph::getMatrice() {
     std::vector< std::vector<int> >::iterator out;
     std::vector<int>::iterator in;
 
-    for (out = matrice.begin(); out != matrice.end(); ++out) {
+    for (out = matrix.begin(); out != matrix.end(); ++out) {
         for(in  = out->begin(); in != out->end(); ++in){
             int index = std::distance(out->begin(), in);
             std::cout <<"||"<<index<< "|| "<< out->at(index)<<std::setw(7);
@@ -105,7 +105,7 @@ int Graph::getMatrice() {
     std::cout << "reciter  - " <<reciter<<  std::endl;
     std::cout << "calc  - " <<calc<<  std::endl;
     std::cout << "matr  - " <<reciter<<  std::endl;
-    std::cout << "And size of matrice is - "<<matrice.size()<<std::endl;
+    std::cout << "And size of matrice is - "<<matrix.size()<<std::endl;
     return 1;
 }
 
@@ -113,7 +113,7 @@ int Graph::getMatrice() {
 
 int Graph::calcIter() {
     // iter;
-    std::cout<<" 100x100 elem is  - "<<matrice.at(1).at(14)<<std::endl;
+    std::cout<<" 100x100 elem is  - "<<matrix.at(1).at(14)<<std::endl;
     // int index  = std::distance(orders.begin(),iter);
     std::cout << "\n" << std::endl;
     //find_if100(vec.begin(),vec.end(),recIter);
@@ -138,14 +138,14 @@ int Graph::getRoutes(){
     while(out_index < orders.size()) {
         //int  i = 0;
 
-        if(matrice.at(out_index).at(out_index) != 0) {
-            std::cout << "in diagonal  index is - " <<matrice.at(out_index).at(out_index)<<"And index is  - "<<out_index<<std::endl;
+        if(matrix.at(out_index).at(out_index) != 0) {
+            std::cout << "in diagonal  index is - " <<matrix.at(out_index).at(out_index)<<"And index is  - "<<out_index<<std::endl;
             // temp = orders.at(out_index).get<3>() * orders.at(out_index).get<4>();
             temp =(TIMETYPE)  orders.at(out_index).get<4>() / ( orders.at(out_index).get<3>() );
 
             for(in_index = 0; in_index < orders.size(); ++in_index) {
 
-                if ((matrice.at(out_index).at(in_index) == 0   && temp != 0) ) {
+                if ((matrix.at(out_index).at(in_index) == 0   && temp != 0) ) {
 
                     if(in_index == (orders.size() -1)) {
                         std::cout << "OUUUUUTTTT  - in_index is  " << in_index<< "and the out_index is "<<out_index << std::endl;
@@ -242,12 +242,12 @@ TIMETYPE Graph::getNode(TIMETYPE temp, int index_temp, int index_second) {
 int Graph::setZeroColStr(int index) {
 
     std::vector <std::vector <int> >::iterator outNull;
-    for(outNull = matrice.begin(); outNull !=matrice.end(); ++outNull) {
+    for(outNull = matrix.begin(); outNull !=matrix.end(); ++outNull) {
         outNull->at(index) = 0;
     }
     
     for(unsigned int i = 0; i < orders.size(); i++){
-        matrice.at(index).at(i) = 0;
+        matrix.at(index).at(i) = 0;
         // for(out = matrice.at(index));
     }
     return 0;

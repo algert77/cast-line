@@ -19,7 +19,7 @@ class Graph {
 
     static Order vertice;
     static Orders orders ;
-    static std::vector<std::vector<int> > matrice;
+    static std::vector<std::vector<int> > matrix;
     std::vector<std::vector<int> >::iterator out;
     static std::vector<int>  inVec;
     //Edges edges;
