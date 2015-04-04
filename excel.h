@@ -1,5 +1,5 @@
-#ifndef  TERWE_H
-#define  TERWE_H 
+#ifndef  EXCEL_H
+#define  EXCEL_H
 #include <QtGui>
 #include <QtXlsx>
 #include <QString>
@@ -58,7 +58,7 @@ public:
 
 
 
-#endif
+#endif //EXCEL_H
 
 
 
