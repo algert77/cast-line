@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
 
-
 MainWindow::MainWindow() {
 
     createMenu();
@@ -13,9 +12,7 @@ MainWindow::MainWindow() {
 }
 
 
-
 MainWindow::~MainWindow() {
-
 
 }
 
@@ -55,19 +52,13 @@ int MainWindow::createActions() {
     connect(countAction, SIGNAL(triggered()), this, SLOT(count_signal()));
     connect(printAction, SIGNAL(triggered()), this, SLOT(printOrders()));
     return 1;
-
 }
-
 
 
 int MainWindow::createControls() {
 
     return 1;
 }
-
-
-
-
 
 
 int MainWindow::clck_emit() {
@@ -161,7 +152,6 @@ QStandardItemModel* MainWindow::createStandardModel( const Nodes nodes , const O
 
     int mod = 0;
     for(int i = 0; i < rows; ++i) {
-
         QStandardItem* item = new QStandardItem (nodes.at(i).first.get<0>() + "|  Номер карты:  " + nodes.at(i).first.get<1>() + " | Название:  " + nodes.at(i).first.get<2>() + " |  Ширина: "  + QString::number(nodes.at(i).first.get<3>()) + " мм   | Иcходный тираж:  " + QString::number( orders.at(vec.at(i).first).get<4>()) +  " кг    | Остаток тиража: " + QString::number(nodes.at(i).first.get<4>())  + " кг    | Время работы  пары:  " + nodes.at(i).first.get<5>());
         model->setItem(mod,0,item);
         ++mod;
