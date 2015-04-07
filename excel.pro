@@ -7,5 +7,5 @@ TARGET = excel
 INCLUDEPATH += .
 QT += xlsx widgets printsupport gui
 # Input
-HEADERS += excel.h graph.h mainwindow.h 
-SOURCES += excel.cpp main.cpp graph.cpp mainwindow.cpp
+HEADERS += ./src/excel.h ./src/graph.h ./src/mainwindow.h 
+SOURCES += ./src/excel.cpp ./src/main.cpp ./src/graph.cpp ./src/mainwindow.cpp
