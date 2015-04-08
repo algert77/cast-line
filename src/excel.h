@@ -35,6 +35,11 @@ class Excel {
 
 private:
     Orders orders;
+    QString nameCell;
+    QString dateCell;
+    QString cardCell;
+    QString widthCell;
+    QString massCell;
 
 public:
     Excel(QString string);

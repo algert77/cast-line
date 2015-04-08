@@ -3,20 +3,26 @@
 Excel::Excel(QString str) {
 
     int i = 1;
+    dateCell  = "A%1";
+    cardCell  = "B%1";
+    nameCell  = "C%1";
+    widthCell = "L%1";
+    massCell  = "M%1";
+
     QXlsx::Document xlsx(str);
     qDebug()<<QString("A%1").arg(1);
 
     while(!xlsx.read(QString("A%1").arg(i)).toString().isEmpty()) {
-        orders.push_back(boost::make_tuple(xlsx.read(QString("A%1").arg(i)).toString(),
-                                           xlsx.read(QString("B%1").arg(i)).toString(),
-                                           xlsx.read(QString("C%1").arg(i)).toString(),
-                                           xlsx.read(QString("L%1").arg(i)).toInt(),
-                                           xlsx.read(QString("M%1").arg(i)).toInt()));
+        orders.push_back(boost::make_tuple(xlsx.read(dateCell.arg(i)).toString(),
+                                           xlsx.read(cardCell.arg(i)).toString(),
+                                           xlsx.read(nameCell.arg(i)).toString(),
+                                           xlsx.read(widthCell.arg(i)).toInt(),
+                                           xlsx.read(massCell.arg(i)).toInt()));
 
         ++i;
     }
 
- 
+
     qDebug()<<QLocale("C").toDate(orders.at(0).get<0>(), QLatin1String("dd.MMM.yyyy"));
   
 }
