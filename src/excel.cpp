@@ -10,9 +10,8 @@ Excel::Excel(QString str) {
     massCell  = "M%1";
 
     QXlsx::Document xlsx(str);
-    qDebug()<<QString("A%1").arg(1);
 
-    while(!xlsx.read(QString("A%1").arg(i)).toString().isEmpty()) {
+    while(!xlsx.read(dateCell.arg(i)).toString().isEmpty()) {
         orders.push_back(boost::make_tuple(xlsx.read(dateCell.arg(i)).toString(),
                                            xlsx.read(cardCell.arg(i)).toString(),
                                            xlsx.read(nameCell.arg(i)).toString(),
@@ -22,9 +21,7 @@ Excel::Excel(QString str) {
         ++i;
     }
 
-
-    qDebug()<<QLocale("C").toDate(orders.at(0).get<0>(), QLatin1String("dd.MMM.yyyy"));
-  
+    //qDebug()<<QLocale("C").toDate(orders.at(0).get<0>(), QLatin1String("dd.MMM.yyyy"));
 }
 
 // = ==================================================================
@@ -32,7 +29,6 @@ Excel::Excel(QString str) {
 std::vector<Order> Excel::getOrders() {
 
     return this->orders;
-
 }
 
 
